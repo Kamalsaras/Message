@@ -1,0 +1,68 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScaleModeGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0.4, 0, 0.35, 0)
+mainFrame.Position = UDim2.new(0.3, 0, 0.35, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+mainFrame.BackgroundTransparency = 0.5
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+
+local titleBox = Instance.new("Frame")
+titleBox.Size = UDim2.new(1, 0, 0.2, 0)
+titleBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+titleBox.BorderSizePixel = 0
+titleBox.Parent = mainFrame
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 1, 0)
+titleLabel.Text = "Important"
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.TextScaled = true
+titleLabel.BackgroundTransparency = 1
+titleLabel.Parent = titleBox
+
+local instructionsLabel = Instance.new("TextLabel")
+instructionsLabel.Size = UDim2.new(1, -20, 0.4, 0)
+instructionsLabel.Position = UDim2.new(0, 10, 0.25, 0)
+instructionsLabel.Text = "Use command ;scale in chat to activate Scale mode. Use ;disablescale to disable Scale mode."
+instructionsLabel.Font = Enum.Font.Gotham
+instructionsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+instructionsLabel.TextScaled = true
+instructionsLabel.BackgroundTransparency = 1
+instructionsLabel.TextWrapped = true
+instructionsLabel.Parent = mainFrame
+
+local discordButton = Instance.new("TextButton")
+discordButton.Size = UDim2.new(0.6, 0, 0.2, 0)
+discordButton.Position = UDim2.new(0.2, 0, 0.7, 0)
+discordButton.Text = "Join our Discord"
+discordButton.Font = Enum.Font.GothamBold
+discordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+discordButton.TextScaled = true
+discordButton.BackgroundColor3 = Color3.fromRGB(0, 122, 255)
+discordButton.Parent = mainFrame
+
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0.2, 0, 0.2, 0)
+closeButton.Position = UDim2.new(0.8, 0, 0.8, 0)
+closeButton.Text = "X"
+closeButton.Font = Enum.Font.GothamBold
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.TextScaled = true
+closeButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+closeButton.Parent = mainFrame
+
+-- Function to copy the Discord link to the clipboard and change button text
+discordButton.MouseButton1Click:Connect(function()
+    setclipboard("https://discord.com/invite/ZATMy8gh")
+    discordButton.Text = "Link Copied"
+end)
+
+-- Function to hide the UI when the close button is clicked
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
